@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const Articles = {
   async index(category) {
     let response
@@ -14,10 +13,9 @@ const Articles = {
     } catch(error) {
       response = error.response.data.error_message
     } finally {
-      return response 
+      return response
     }
   },
-
   async show(articleId) {
     try {
       let result = await axios.get(`/articles/${articleId}`);

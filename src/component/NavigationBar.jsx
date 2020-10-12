@@ -78,14 +78,14 @@ const NavigationBar = () => {
             Weather
           </Menu.Item>
           <Menu.Item
-            data-cy="international"
-            name="international"
-            active={activeItem === "international"}
+            data-cy="international-news"
+            name="international-news"
+            active={activeItem === "international-news"}
             onClick={handleItemClick}
             as={Link}
-            to={{ pathname: "/international" }}
+            to={{ pathname: "/international-news" }}
           >
-            International
+            International news
           </Menu.Item>
 
         </Menu>
