@@ -31,7 +31,7 @@ const SpecificArticle = () => {
           <div data-cy="article">
             <h1 data-cy="title">{article.title}</h1>
             <h3 data-cy="teaser">{article.teaser}</h3>
-            <Image data-cy="image" src={article.image} />
+            <Image size="medium" data-cy="image" src={article.image} />
             <p data-cy="content">{article.content}</p>
           </div>
 

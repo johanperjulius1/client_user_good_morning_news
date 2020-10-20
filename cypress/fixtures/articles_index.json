@@ -16,9 +16,7 @@
     {
       "id": 3,
       "title": "Hello Kista",
-      "teaser": "Sun is always shining in Kista",
-      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png"
-
+      "teaser": "Sun is always shining in Kista"
     }
   ]
 }

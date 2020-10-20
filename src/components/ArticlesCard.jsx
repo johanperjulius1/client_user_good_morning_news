@@ -10,7 +10,7 @@ const ArticlesCard = ({ article }) => {
           <Card.Header as={Link} to={`/articles/${article.id}`} data-cy="title">
             {article.title}
           </Card.Header>
-          <Image data-cy="image" src='https://react.semantic-ui.com/images/avatar/large/matthew.png'/> 
+          {article.image && <Image data-cy="image" src={article.image} />}
           <Card.Description data-cy="teaser">{article.teaser}</Card.Description>
         </Card.Content>
       </Card>
