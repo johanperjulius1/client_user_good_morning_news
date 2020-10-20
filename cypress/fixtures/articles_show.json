@@ -5,6 +5,7 @@
       "title": "Hello World",
       "teaser": "Sun is always shining in Kista",
       "content": "Jenny is cool",
-      "premium": false
+      "premium": false,
+      "image": "https://react.semantic-ui.com/images/avatar/large/matthew.png"
     }
 }

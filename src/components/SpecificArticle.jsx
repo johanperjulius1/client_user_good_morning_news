@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Articles from "../modules/articles";
-import { Container, Button, Segment } from "semantic-ui-react";
+import { Container, Button, Segment, Image } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 
 const SpecificArticle = () => {
@@ -31,6 +31,7 @@ const SpecificArticle = () => {
           <div data-cy="article">
             <h1 data-cy="title">{article.title}</h1>
             <h3 data-cy="teaser">{article.teaser}</h3>
+            <Image data-cy="image" src={article.image} />
             <p data-cy="content">{article.content}</p>
           </div>
 
