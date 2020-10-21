@@ -26,6 +26,9 @@ describe("visitor can see all listed articles", () => {
         );
       });
     });
+    it("visitor can see article image", () => {
+      cy.get("[data-cy='image']").should("exist")
+    })
   });
 
   context("when visiting sports category", () => {

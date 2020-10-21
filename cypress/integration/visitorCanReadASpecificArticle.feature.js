@@ -30,6 +30,7 @@ describe("Visitor can read a specific article", () => {
           "contain",
           "Sun is always shining in Kista"
         );
+        cy.get("[data-cy='image']").should("exist")
         cy.get("[data-cy='content']").should("contain", "Jenny is cool");
       });
     });
