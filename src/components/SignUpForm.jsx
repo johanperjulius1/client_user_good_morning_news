@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const SignUpForm = () => {
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,8 +25,9 @@ const SignUpForm = () => {
           currentUser: response.data,
         },
       });
-
-      history.replace({ pathname: "/" });
+      setMessage(response.data.message)
+      debugger
+      history.push({ pathname: "/login", message: message });
     } catch (error) {
       setMessage(error.response.data.errors[0]);
     }

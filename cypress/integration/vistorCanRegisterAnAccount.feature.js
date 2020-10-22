@@ -4,17 +4,18 @@ describe("Visitor can see a register button", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v1/auth?confirm_success_url=registered@mail.com",
-      response: `fixture:successful_login_registered.json`,
+      response: { message: "Your registration was successful! Please log in to confirm your registration" },
+
     });
-    // cy.route({
-    //   method: "GET",
-    //   url: "http://localhost:3000/api/v1/auth/sign_in",
-    // });
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/v1/articles",
       response: "fixture:articles_index.json",
     });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v1/auth/**",
+    })
     cy.visit("/");
 
   });
@@ -28,8 +29,8 @@ describe("Visitor can see a register button", () => {
         cy.get('[data-cy="password"]').type("password");
         cy.get('[data-cy="password-confirmation"]').type("password");       
         cy.get('[data-cy="submit"]').contains("Submit").click();
-        cy.get('[data-cy="registration-message"]').contains("Your registration was successful!")
-      });
+        cy.get('[data-cy="message"]').contains("Your registration was successful! Please log in to confirm your registration")
+      });    
     });
   });
 });
