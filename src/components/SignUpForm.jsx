@@ -5,19 +5,19 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const SignUpForm = () => {
-  const [message, setMessage] = useState("");
+  const [failureMessage, setFailureMessage] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
 
   const signUp = async (event, dispatch, history) => {
     event.preventDefault();
     try {
+      if(event.target.password.value === event.target.passwordConfirmation.value) {
       const name = event.target.name.value;
       const email = event.target.email.value;
       const password = event.target.password.value;
-      const passwordConfirmation = event.target.passwordConfirmation.value;
-
-      const response = await auth.signUp(name, email, password, passwordConfirmation);
+    
+      const response = await auth.signUp(name, email, password);
       dispatch({
         type: "AUTHENTICATE",
         payload: {
@@ -25,11 +25,9 @@ const SignUpForm = () => {
           currentUser: response.data,
         },
       });
-      setMessage(response.data.message)
-      debugger
-      history.push({ pathname: "/login", message: message });
-    } catch (error) {
-      setMessage(error.response.data.errors[0]);
+      history.replace("/login", { message: response.data.message });
+    }} catch (error) {
+      setFailureMessage(error.response.data.errors[0]);
     }
   };
 
@@ -82,9 +80,9 @@ const SignUpForm = () => {
         />
         <Button data-cy="submit" id="Submit" content="Submit" primary />
       </Form>
-      {message && (
-        <Message negative data-cy="message">
-          <Message.Header>{message}</Message.Header>
+      {failureMessage && (
+        <Message negative >
+          <Message.Header data-cy="message">{failureMessage}</Message.Header>
         </Message>
       )}
     </Container>

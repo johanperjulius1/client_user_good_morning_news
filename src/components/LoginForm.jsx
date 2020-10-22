@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, Container, Message } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const LoginForm = () => {
   const [message, setMessage] = useState();
+  const [registrationMessage, setRegistrationMessage] = useState();
+  let location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -30,8 +32,19 @@ const LoginForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (location.state) {
+      setRegistrationMessage(location.state.message);
+    }
+  }, [location]);
+
   return (
     <Container>
+      {registrationMessage && (
+        <Message positive data-cy="registration-message">
+          <Message.Header>{registrationMessage}</Message.Header>
+        </Message>
+      )}
       <Form
         data-cy="login-form"
         onSubmit={(event) => login(event, dispatch, history)}

@@ -29,8 +29,8 @@ describe("Visitor can see a register button", () => {
         cy.get('[data-cy="password"]').type("password");
         cy.get('[data-cy="password-confirmation"]').type("password");       
         cy.get('[data-cy="submit"]').contains("Submit").click();
-        cy.get('[data-cy="message"]').contains("Your registration was successful! Please log in to confirm your registration")
       });    
+      cy.get('[data-cy="registration-message"]').contains("Your registration was successful! Please log in to confirm your registration")
     });
   });
 });
