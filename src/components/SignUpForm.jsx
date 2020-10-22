@@ -12,12 +12,12 @@ const SignUpForm = () => {
   const signUp = async (event, dispatch, history) => {
     event.preventDefault();
     try {
-      if(event.target.password.value === event.target.passwordConfirmation.value) {
       const name = event.target.name.value;
       const email = event.target.email.value;
       const password = event.target.password.value;
+      const passwordConfirmation = event.target.passwordConfirmation.value;
     
-      const response = await auth.signUp(name, email, password);
+      const response = await auth.signUp(name, email, password, pass);
       dispatch({
         type: "AUTHENTICATE",
         payload: {
@@ -26,7 +26,7 @@ const SignUpForm = () => {
         },
       });
       history.replace("/login", { message: response.data.message });
-    }} catch (error) {
+    } catch (error) {
       setFailureMessage(error.response.data.errors[0]);
     }
   };
