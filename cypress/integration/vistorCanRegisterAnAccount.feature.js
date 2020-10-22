@@ -3,13 +3,13 @@ describe("Visitor can see a register button", () => {
     cy.server();
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/v1/auth/sign_up",
+      url: "http://localhost:3000/api/v1/auth?confirm_success_url=registered@mail.com",
       response: `fixture:successful_login_registered.json`,
     });
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/api/v1/auth/sign_in",
-    });
+    // cy.route({
+    //   method: "GET",
+    //   url: "http://localhost:3000/api/v1/auth/sign_in",
+    // });
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/v1/articles",
